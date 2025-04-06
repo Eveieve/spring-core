@@ -39,4 +39,11 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
          System.out.println(memberService);
      }
+
+     @Test
+    @DisplayName("빈 이름으로 조회x")
+    void findBeanByNameX() {
+         MemberService xxxx = ac.getBean("xxxx", MemberService.class);
+         // No Such DefinitionException: No bean named 'xxxx' available
+     }
 }
