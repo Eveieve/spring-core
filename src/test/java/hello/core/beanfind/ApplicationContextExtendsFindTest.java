@@ -10,6 +10,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Map;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -38,11 +40,18 @@ public class ApplicationContextExtendsFindTest {
 
     }
 
+    @Test
+    @DisplayName("부모 타입으로 모두 조회하기")
+    void findAllBeanByParentType() {
+        Map<String, DiscountPolicy> beansOfType = ac.getBeansOfType(DiscountPolicy.class);
+        assertThat(beansOfType.size()).isEqualTo(2);
+
+    }
     @Configuration
     static class TestConfig {
 
         @Bean
-        public DiscountPolicy rateDiscountPolicy() {
+        public DiscountPolicy rateDiscountPolicy() { // 역할(DiscountPolicy)로 조회
             return new RateDiscountPolicy();
         }
 
