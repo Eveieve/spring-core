@@ -8,6 +8,7 @@ import hello.core.member.MemoryMemberRepository;
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository = new MemoryMemberRepository();
+    // OrderServiceImple 가 직접 구현체 선택까지 해버림 = 배우가 섭외까지 하는 상황.
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); // 고정 할인 금액 정책 적용한 것
 
     // 새로운 할인 정책으로 변경하려면 우측 new RateDiscountPolicy()로 바꿔줘야 함. => 구현체 클래스에도 함께 의존하고 있음. => DIP 위반.
