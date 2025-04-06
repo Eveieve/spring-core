@@ -3,12 +3,14 @@ package hello.core.beanfind;
 import hello.core.AppConfig;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 // public 없어도 됨
  class ApplicationContextBasicFindTest {
@@ -45,5 +47,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
     void findBeanByNameX() {
          MemberService xxxx = ac.getBean("xxxx", MemberService.class);
          // No Such DefinitionException: No bean named 'xxxx' available
+
+         // throw 되어야 테스트 성공하는 것임.
+         assertThrows(NoSuchBeanDefinitionException.class, () -> ac.getBean("xxxx", MemberService.class));
      }
 }
