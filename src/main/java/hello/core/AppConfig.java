@@ -18,6 +18,7 @@ public class AppConfig {
 
     public MemberService memberService() {
         // 역할이 분명히 들어나게 됨.
+        // 나중에 구현체를 변명하고 싶을때 이 코드만 변경하면 됨.
         return new MemberServiceImpl(memberRepository()); // 생성자 주입함.
     }
 
