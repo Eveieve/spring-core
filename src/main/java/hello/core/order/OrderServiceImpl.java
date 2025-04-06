@@ -1,8 +1,6 @@
 package hello.core.order;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
@@ -16,8 +14,12 @@ public class OrderServiceImpl implements OrderService {
     // => 인터페이스에만 의존하도록 의존관계 변경해야함.
 
     // => 할인 정책을 변경하려면 클라이언트인 ORderServiceImpl코드를 고쳐야 함. => OCP 위반.
-    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+    //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
+    // 인터페이스에만 의존하도록 변경함.
+    // => 하지만 인터페이스는 객체를 생성할 수 없음.
+    // => 클라이언트인 OrderServiceImpl에게 구현 객체를 주입해줘야함.
+    private DiscountPolicy discountPolicy;
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
