@@ -30,4 +30,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
          assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
      }
 
+     // 구현에 의존하는것은 안좋기 때문에 이런 테스트는 애초에 좋지 않음
+     @Test
+    @DisplayName("구체 타입으로 빈 조회")
+    void findBeanByImplType() {
+         MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
+         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+
+         System.out.println(memberService);
+     }
 }
