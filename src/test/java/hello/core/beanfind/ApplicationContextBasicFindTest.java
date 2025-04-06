@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 // public 없어도 됨
  class ApplicationContextBasicFindTest {
 
@@ -18,7 +20,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
     void findBeanByName() {
          MemberService memberService = ac.getBean("memberService", MemberService.class);
          // 등록된 빈이 MemberServiceImpl의 인스턴스인지 확인하기
-         Assertions.assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+        assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+     }
+
+     @Test
+    @DisplayName("타입으로 빈 조회")
+    void findBeanByType() {
+         MemberService memberService = ac.getBean(MemberService.class);
+         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
      }
 
 }
