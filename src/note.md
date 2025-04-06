@@ -23,3 +23,22 @@
 - 부모 타입으로 조회하면, 자식 타입도 함께 조회된다. 
 - 자바 객체 최고 부모인 Object 타입으로 조회하면, 모든 스프링 빈을 조회한다. 
 ![img_4.png](img_4.png)
+
+## BeanFactory와 ApplicationContext 
+- BeanFactory 
+- 스프링 컨테이너의 최상위 인터페이스 
+- 스프링 빈을 관리하고 조회함
+- getBea()을 ㅈ제공함
+
+<ApplicationContext>
+- BeanFactory 기능을 모두 상속 받아 제공함 
+- 둘의 차이는? 
+- 애플리케이션 개발할때는 빈을 관리/조회하는 기능은 물론, 그 외 수 많은 부가 기능 필요함. 
+- 메시지 소스를 활용한 국제화 기능. 
+- 환경변수 
+- 애플리케이션 이벤트 
+- 편리한 리소스 조회 
+
+### 정리 
+- BeanFactory 를 직접 사용할 일은 거의 없다. 부가 기능이 포함된 ApplicationContext를 사용함. 
+- BeanFactory 나 ApplicationContext 를 스프링 컨테이너라고 함. 
