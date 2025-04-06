@@ -39,7 +39,7 @@ public class SingletonTest {
         System.out.println(instance);
         System.out.println(instance2);
 
-        Assertions.assertThat(instance).isNotSameAs(instance2);
+        Assertions.assertThat(instance).isSameAs(instance2);
 
 
     }
