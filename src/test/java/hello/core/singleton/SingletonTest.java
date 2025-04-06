@@ -6,6 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class SingletonTest {
 
     @Test
@@ -25,5 +27,20 @@ public class SingletonTest {
         Assertions.assertThat(memberService1).isNotSameAs(memberService2);
 
         // 해결 방안 - 객체가 딱 1개만 생성되고, 공유하도록 설계하기-> 싱글톤 패턴
+    }
+
+    @Test
+    @DisplayName("싱글톤 패턴을 적용한 객체 사용")
+    void singletonServiceTest() {
+        SingletonService instance = SingletonService.getInstance();
+        SingletonService instance2 = SingletonService.getInstance();
+
+        // 참조값이 같은 것 확인
+        System.out.println(instance);
+        System.out.println(instance2);
+
+        Assertions.assertThat(instance).isNotSameAs(instance2);
+
+
     }
 }
