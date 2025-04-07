@@ -16,6 +16,12 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
  // 1. new MemoryMemberRepository() 가 중복됨.
 
+
+    // @Bean memberService -> new MemoryMemberRepository()
+    // @Bean orderService -> new MemoryMEmberRepository()
+    // -> 싱글톤이 깨지는 것일까?
+
+
     @Bean  // bean 하면 스프링 컨테이너에 저장된다.
     public MemberRepository memberRepository() { // private 메소드 두기
         return new MemoryMemberRepository();

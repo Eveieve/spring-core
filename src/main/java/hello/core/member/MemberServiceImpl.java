@@ -24,4 +24,8 @@ public class MemberServiceImpl implements MemberService {
         // 저장소에서 불러온 멤버를 리턴함.
        return memberRepository.findById(memberId);
     }
+
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
